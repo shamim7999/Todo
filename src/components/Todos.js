@@ -1,31 +1,28 @@
 import React from 'react';
 import { Table } from 'react-bootstrap';
 import Todo from './Todo'; // Import the Todo component
+import '../css/Card-Style.css'
 
-const Todos = ({ todos, handleDelete }) => {
-  console.log(todos);
+const Todos = ({ todos, handleDelete , handleUpdateTodo}) => {
+  console.log("inside todos.js");
 
   return (
-    <div className='todos'>
-      <Table striped bordered hover className='text-center'>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Priority</th>
-            <th>Created</th>
-            <th>Updated</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {todos.map(todo => (
-            // Render each todo using the Todo component
-            <Todo key={todo.id} todo={todo} handleDelete={handleDelete} />
-          ))}
-        </tbody>
-      </Table>
+    <div>
+      <section>
+        <div className='container'>
+          <h1>My Todo List</h1>
+          <div className='cards'>
+          {
+            todos.map((todo, i) => (
+              // Render each todo using the Todo component
+              <div key={i} className='card'>
+                <Todo handleUpdateTodo={handleUpdateTodo} key={todo.id} todo={todo} handleDelete={handleDelete} />
+              </div>
+            ))
+          }
+          </div>
+        </div>
+      </section>
     </div>
   );
 };

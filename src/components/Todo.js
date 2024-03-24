@@ -1,26 +1,49 @@
-import React from 'react';
+import React from "react";
+import DNoteForm from "../DNoteForm";
+import { DModal } from "../DModal";
+import "../css/Todos-Style.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Button } from "react-bootstrap";
 
-const Todo = ({ todo, handleDelete }) => {
+const Todo = ({ todo, handleDelete, handleUpdateTodo }) => {
+  const handleClickForDelete = (e) => {
+    e.preventDefault();
+    handleDelete(todo.id);
+    console.log(todo.id);
+  };
+  // console.log(todo)
 
-   const handleClickForDelete = (e) => {
-        e.preventDefault();
-        handleDelete(todo.id);
-        console.log(todo.id);
-   }
+  // const handleClickForUpdate = (e) => {
+  //   e.preventDefault();
+  //   handleUpdate(todo, 'Update Todo');
+  //   console.log(todo);
+  // }
 
   return (
-    <tr key={todo.id}>
-      <td>{todo.id}</td>
-      <td>{todo.title}</td>
-      <td>{todo.description}</td>
-      <td>{todo.priority}</td>
-      <td>{new Date(todo.created).toLocaleString()}</td>
-      <td>{new Date(todo.updated).toLocaleString()}</td>
-      <td>
-        <button className='btn btn-success' >Update</button> &nbsp;
-        <button className='btn btn-danger' onClick={handleClickForDelete}>Delete</button>
-      </td>
-    </tr>
+    <div key={todo.id}>
+      {/* <td>{todo.id}</td> */}
+      <h1>{todo.title}</h1>
+      <h5 textAlign="center">{todo.description}</h5>
+      <div style={{ color: "red" }}>Priority: {todo.priority}</div>
+      <div>
+        <b>Created At - </b>
+        {new Date(todo.created).toLocaleString()}
+      </div>
+      <div>
+        {" "}
+        <b>Updated At - </b> {new Date(todo.updated).toLocaleString()}
+      </div>
+      <div className="d-flex justify-content-center align-items-center">
+        <DModal
+          handleUpdateTodo={handleUpdateTodo}
+          title="update"
+          todo={todo}
+        /> &nbsp;
+        <button className="btn btn-danger mt-2" onClick={handleClickForDelete}>
+          Delete
+        </button>
+      </div>
+    </div>
   );
 };
 
