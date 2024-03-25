@@ -1,11 +1,13 @@
 import React from "react";
-import DNoteForm from "../DNoteForm";
 import { DModal } from "../DModal";
 import "../css/Todos-Style.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Button } from "react-bootstrap";
 
-const Todo = ({ todo, handleDelete, handleUpdateTodo }) => {
+const Todo = ({
+  todo,
+  handleDelete,
+  handleUpdateTodo
+}) => {
   const handleClickForDelete = (e) => {
     e.preventDefault();
     handleDelete(todo.id);
@@ -38,7 +40,9 @@ const Todo = ({ todo, handleDelete, handleUpdateTodo }) => {
           handleUpdateTodo={handleUpdateTodo}
           title="update"
           todo={todo}
-        /> &nbsp;
+          
+        />{" "}
+        &nbsp;
         <button className="btn btn-danger mt-2" onClick={handleClickForDelete}>
           Delete
         </button>

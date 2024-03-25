@@ -1,44 +1,44 @@
 .todo-card-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-  
-  .todo-card {
-    background-color: #f0f0f0; /* Light gray background */
-    border-radius: 8px;
-    padding: 16px;
-    margin-bottom: 16px;
-    width: calc(33.333% - 16px); /* One-third width minus margin */
-    box-sizing: border-box;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
-  }
-  
-  .todo-content {
-    flex: 1;
-  }
-  
-  .todo-meta {
-    margin-top: 8px;
-    display: flex;
-    flex-wrap: wrap;
-  }
-  
-  .todo-meta p {
-    margin-right: 20px;
-    margin-bottom: 0;
-  }
-  
-  .todo-actions button {
-    background-color: #dc3545;
-    color: #ffffff;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .todo-actions button:hover {
-    background-color: #c82333;
-  }
-  
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.todo-card {
+  background-color: #f0f0f0; /* Light gray background */
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  width: calc(33.333% - 16px); /* One-third width minus margin */
+  box-sizing: border-box;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  border-left: 3px solid green;
+}
+
+.todo-content {
+  flex: 1;
+}
+
+.todo-meta {
+  margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.todo-meta p {
+  margin-right: 20px;
+  margin-bottom: 0;
+}
+
+.todo-actions button {
+  background-color: #dc3545;
+  color: #ffffff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.todo-actions button:hover {
+  background-color: #c82333;
+}

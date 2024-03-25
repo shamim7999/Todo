@@ -1,25 +1,44 @@
-import React from 'react';
-import { Table } from 'react-bootstrap';
-import Todo from './Todo'; // Import the Todo component
-import '../css/Card-Style.css'
+import React from "react";
+import Todo from "./Todo"; // Import the Todo component
 
-const Todos = ({ todos, handleDelete , handleUpdateTodo}) => {
-  console.log("inside todos.js");
+
+import "../css/Card-Style.css";
+import CardWithPlus from "./AddIcon";
+
+const Todos = ({
+  todos,
+  handleDelete,
+  handleUpdateTodo,
+  handleOpen
+}) => {
+  //console.log("inside todos.js");
+
+  const handleClick = (e) => {
+    console.log("I am here in Todos.js");
+    handleOpen();
+  };
 
   return (
     <div>
       <section>
-        <div className='container'>
+        <div className="container">
           <h1>My Todo List</h1>
-          <div className='cards'>
-          {
-            todos.map((todo, i) => (
+          <div className="cards">
+            {todos.map((todo, i) => (
               // Render each todo using the Todo component
-              <div key={i} className='card'>
-                <Todo handleUpdateTodo={handleUpdateTodo} key={todo.id} todo={todo} handleDelete={handleDelete} />
+              <div key={i} className="card">
+                <Todo
+                  handleUpdateTodo={handleUpdateTodo}
+                  key={todo.id}
+                  todo={todo}
+                  handleDelete={handleDelete}
+                  
+                />
               </div>
-            ))
-          }
+            ))}
+            <div>
+              <CardWithPlus onClick={handleClick} />
+            </div>
           </div>
         </div>
       </section>
