@@ -7,43 +7,6 @@ import DNoteForm from "./DNoteForm";
 
 
 
-class Clock extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { date: new Date() };
-  }
-
-  componentDidMount() {
-    this.clockTimer = setInterval(() => {
-      this.tick();
-    }, 1000);
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.clockTimer);
-  }
-
-  tick() {
-    this.setState({
-      date: new Date(),
-    });
-  }
-
-  render() {
-    return (
-      <div>
-        <NavbarApp />
-        <DNoteForm />
-        
-        
-
-        
-
-      </div>
-    );
-  }
-}
-
 // setInterval(() => {
 //   const myFirstElement =
 //   <div>
