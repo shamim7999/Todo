@@ -27,6 +27,7 @@ const Todo = ({
       <h1>{todo.title}</h1>
       <h5 textAlign="center">{todo.description}</h5>
       <div style={{ color: "red" }}>Priority: {todo.priority}</div>
+      <div style={{ color: "blue" }}>Status: {todo._status}</div>
       <div>
         <b>Created At - </b>
         {new Date(todo.created).toLocaleString()}

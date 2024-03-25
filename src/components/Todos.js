@@ -35,7 +35,8 @@ const Todos = ({
                   
                 />
               </div>
-            ))}
+            ))
+            }
             <div>
               <CardWithPlus onClick={handleClick} />
             </div>

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { DModal } from "./DModal";
 import Todos from "./components/Todos";
-import CompletedTodos from "./components/CompletedTodos";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Button } from "react-bootstrap";
 
 const DNoteForm = () => {
   const [todos, setTodos] = useState(
@@ -10,6 +11,8 @@ const DNoteForm = () => {
       : []
   );
 
+  const [viewTodos, setViewTodos] = useState(todos);
+
   const [open, setOpen] = useState(false);
 
   console.log(todos);
@@ -17,11 +20,13 @@ const DNoteForm = () => {
   useEffect(() => {
     console.log("useEffect called");
     localStorage.setItem("todos", JSON.stringify([...todos]));
+    setViewTodos(todos);
   }, [todos]);
 
   const handleNewTodo = (newTodo) => {
     console.log("I am here");
     setTodos([...todos, newTodo]);
+    setViewTodos(todos);
   };
 
   const handleDelete = (id) => {
@@ -47,8 +52,39 @@ const DNoteForm = () => {
     setTodos(updatedTodos);
   };
 
+  const handleShowAllTodos = () => {
+      setViewTodos(todos);
+  }
+
+  const handleShowCompletedTodos = () => {
+      const completedTodos = todos.filter((todo) => todo._status === 'Completed');
+      setViewTodos(completedTodos);
+  }
+
+  const handleShowFailedTodos = () => {
+    const failedTodos = todos.filter((todo) => todo._status === 'Failed');
+    setViewTodos(failedTodos);
+  }
+  
+  const handleShowPendingTodos = () => {
+    const pendingTodos = todos.filter((todo) => todo._status === 'Pending');
+    setViewTodos(pendingTodos);
+  }
+
+  const handleShowInProgressTodos = () => {
+    const inProgressTodos = todos.filter((todo) => todo._status === 'In Progress');
+    setViewTodos(inProgressTodos);
+  }
+
   return (
     <div>
+      <div className='text-center mt-5'>
+      <Button variant="success" onClick={handleShowInProgressTodos}>In Progress Todos</Button>{' '}
+        <Button variant="secondary" onClick={handleShowPendingTodos} >Pending Todos</Button>{' '}
+        <Button variant="primary" onClick={handleShowAllTodos}>All Todos</Button>{' '}
+        <Button variant="warning" onClick={handleShowCompletedTodos} >Completed Todos</Button>{' '}
+        <Button variant="danger" onClick={handleShowFailedTodos}>Failed Todos</Button>{' '}
+    </div>
       <DModal
         
         title="Add Todo"
@@ -57,11 +93,10 @@ const DNoteForm = () => {
         handleCloseFromDNoteForm={handleCloseFromDNoteForm}
         handleOpen={handleOpen}
       />
-      {/* <CompletedTodos  /> */}
 
       <Todos
         handleUpdateTodo={handleUpdateTodo}
-        todos={todos}
+        todos={viewTodos}
         handleDelete={handleDelete}
         open={open}
         handleCloseFromDNoteForm={handleCloseFromDNoteForm}
