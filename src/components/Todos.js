@@ -9,7 +9,8 @@ const Todos = ({
   todos,
   handleDelete,
   handleUpdateTodo,
-  handleOpen
+  handleOpen,
+  handleComplete
 }) => {
   //console.log("inside todos.js");
 
@@ -32,7 +33,7 @@ const Todos = ({
                   key={todo.id}
                   todo={todo}
                   handleDelete={handleDelete}
-                  
+                  handleComplete={handleComplete}
                 />
               </div>
             ))

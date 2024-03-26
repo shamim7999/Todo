@@ -33,6 +33,20 @@ const DNoteForm = () => {
   const handleDelete = (id) => {
     setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
   };
+
+  const handleComplete = (id) => {
+    console.log(`In Complete for id: ${id}`);
+    setTodos((prevTodos) => {
+      return prevTodos.map((todo) => {
+        if(todo.id === id) {
+          todo._status = 'Completed';
+        }
+        return todo;
+      });
+    });
+  }
+  
+
   const handleOpen = () => {
     setOpen(true);
     console.log("Clicked and here");
@@ -108,6 +122,7 @@ const DNoteForm = () => {
         open={open}
         handleCloseFromDNoteForm={handleCloseFromDNoteForm}
         handleOpen={handleOpen}
+        handleComplete={handleComplete}
       />
     </div>
   );

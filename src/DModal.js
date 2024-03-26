@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import MyForm from "./components/Form";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEdit } from "@fortawesome/free-solid-svg-icons";
 
 export const DModal = ({
   handleNewTodo,
@@ -48,12 +50,10 @@ export const DModal = ({
   return (
     <>
       {title === 'update' && (
-    <div className="text-center mt-3">
-      <Button className="" variant="outline-primary" onClick={handleShow}>
-        {title}
-      </Button>
-    </div>
-  )}
+        <div className="text-center mt-3" style={{ cursor: 'pointer' }} onClick={handleShow}>
+          <FontAwesomeIcon icon={faEdit} style={{ fontSize: '24px', color: '#007bff' }} /> {/* Edit icon */}
+        </div>
+      )}
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>

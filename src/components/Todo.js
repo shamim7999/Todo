@@ -3,14 +3,19 @@ import { DModal } from "../DModal";
 import "../css/Todos-Style.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faExclamationCircle, faStar } from "@fortawesome/free-solid-svg-icons";
+import { faExclamationCircle, faStar, faTrash, faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 
-const Todo = ({ todo, handleDelete, handleUpdateTodo }) => {
+const Todo = ({ todo, handleDelete, handleUpdateTodo, handleComplete }) => {
   const handleClickForDelete = (e) => {
     e.preventDefault();
     handleDelete(todo.id);
     console.log(todo.id);
   };
+
+  const handleClickForComplete = (e) => {
+      e.preventDefault();
+      handleComplete(todo.id);
+  }
 
   const renderPriorityStars = (priority) => {
     const stars = [];
@@ -50,12 +55,25 @@ const Todo = ({ todo, handleDelete, handleUpdateTodo }) => {
             todo={todo}
           />
           &nbsp;
-          <button
-            className="btn btn-danger mt-3"
+          
+
+          <div className="text-center mt-3" style={{ cursor: 'pointer' }} >
+            <FontAwesomeIcon
+            icon={faTrash} // Use the delete icon
+            style={{ fontSize: '23px', cursor: 'pointer', color: 'red' }} // Increase size and add pointer cursor
             onClick={handleClickForDelete}
-          >
-            Delete
-          </button>
+
+          />
+          </div>
+          &nbsp;
+          <div className="text-center mt-3" style={{ cursor: 'pointer' }} >
+            <FontAwesomeIcon
+            icon={faCheckCircle} // Use the delete icon
+            style={{ fontSize: '23px', cursor: 'pointer', color: 'green' }} // Increase size and add pointer cursor
+            onClick={handleClickForComplete}
+
+          />
+          </div>
         </div>
       </div>
     </div>
